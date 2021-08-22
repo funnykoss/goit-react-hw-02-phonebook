@@ -1,5 +1,5 @@
 import React from 'react';
-import s from '../../App.css'
+import s from '../ContactList/ContactsList.module.css'
 const Contact = () => {
     return (
          <section>

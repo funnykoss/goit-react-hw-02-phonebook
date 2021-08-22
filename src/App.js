@@ -3,7 +3,7 @@ import ContactForm from './components/ContactForm/ContactForm.jsx';
 import ContactList from './components/ContactList/ContactList.jsx';
 import Filter from './components/Filter/Filter.jsx';
 import Contact from './components/ContactList/Contact.jsx';
-// import shortid from 'shortid';
+import s from './App.module.css';
 
 export default class App extends Component {
   state = {
@@ -51,15 +51,17 @@ export default class App extends Component {
 
     return (
       <>
-        <ContactForm addContact={this.addContact} />
-        <Contact />
-        <Filter value={this.state.filter} onChange={this.onChange} />
-        <ContactList
-          // contacts={this.state.contacts}
+        <section className={s.section}>
+          <ContactForm addContact={this.addContact} />
+          <Contact />
+          <Filter value={this.state.filter} onChange={this.onChange} />
+          <ContactList
+            // contacts={this.state.contacts}
 
-          onDeleteContact={this.deleteContact}
-          contacts={filteredContacts}
-        />
+            onDeleteContact={this.deleteContact}
+            contacts={filteredContacts}
+          />
+        </section>
       </>
     );
   }
