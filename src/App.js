@@ -16,7 +16,6 @@ export default class App extends Component {
     filter: '',
   };
   addContact = newContact => {
-    console.log(newContact);
     const contactCheck = this.state.contacts.find(
       ({ name }) => name === newContact.name,
     );
@@ -31,18 +30,9 @@ export default class App extends Component {
     }));
   };
   onChange = event => {
-    this.setState({ filter: event.currentTarget.value });
+    this.setState({ [event.currentTarget.name]: event.currentTarget.value });
   };
 
-  filterContacts = () => {
-    const { filter, contacts } = this.state;
-
-    const normalizeFilter = filter.toLowerCase();
-
-    return contacts.filter(contact =>
-      contact.name.toLowerCase().includes(normalizeFilter),
-    );
-  };
   deleteContact = id => {
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(contact => contact.id !== id),
@@ -53,7 +43,11 @@ export default class App extends Component {
     this.setState({ filter: '' });
   };
   render() {
-    const renderContactList = this.filterContacts();
+    const { filter, contacts } = this.state;
+    const normalizeContacts = filter.toLowerCase();
+    const filteredContacts = contacts.filter(({ name }) =>
+      name.toLowerCase().includes(normalizeContacts),
+    );
 
     return (
       <>
@@ -61,8 +55,10 @@ export default class App extends Component {
         <Contact />
         <Filter value={this.state.filter} onChange={this.onChange} />
         <ContactList
-          contacts={renderContactList}
+          // contacts={this.state.contacts}
+
           onDeleteContact={this.deleteContact}
+          contacts={filteredContacts}
         />
       </>
     );

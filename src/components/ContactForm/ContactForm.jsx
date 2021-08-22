@@ -10,7 +10,7 @@ export default class ContactForm extends Component{
 
     handlerChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: [value] });
+    this.setState({ [name]: value});
   };
 
     submitForm = event => {
@@ -32,12 +32,11 @@ export default class ContactForm extends Component{
         return (
        <>
         <h2 className={s.title}>Phonebook</h2>
-        <form  className={s.form} onSubmit={this.submitForm}>
-              <label className={s.label}
-                htmlFor={shortid.generate()}>
+            <form className={s.form}
+              onSubmit={this.submitForm}>
+              <label className={s.label}>
             Name
             <input className={s.input}
-              id={shortid.generate()}
               type="text"
               name="name"
               pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
@@ -47,11 +46,9 @@ export default class ContactForm extends Component{
               onChange={this.handlerChange}
             />
           </label>
-              <label className={s.label}
-                htmlFor={shortid.generate()}>
+              <label className={s.label}>
             Number
             <input className={s.input}
-              id={shortid.generate()}
               type="tel"
               name="number"
               pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
