@@ -1,6 +1,7 @@
 import React from 'react';
 import shortid from 'shortid';
 import s from '../Filter/Filter.module.css'
+import PropTypes from 'prop-types';
 
 export default function Filter({ value, onChange }) {
     return (
@@ -14,4 +15,9 @@ export default function Filter({ value, onChange }) {
                 onChange={onChange}/>
         </label>
     )
+}
+
+Filter.prototype = {
+    value: PropTypes.string.isRequired,
+    onChange: PropTypes.func.isRequired,
 }
