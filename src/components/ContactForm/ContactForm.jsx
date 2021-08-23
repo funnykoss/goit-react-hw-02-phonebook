@@ -6,7 +6,7 @@ export default class ContactForm extends Component{
     state = {
          name: '',
         number: '',
-    }
+  }
 
     handlerChange = event => {
     const { name, value } = event.target;
@@ -27,7 +27,7 @@ export default class ContactForm extends Component{
   }
     reset = () => {
         this.setState({ name: '', number: '',})
-    }
+  }
     render(){
         return (
        <>
@@ -62,5 +62,5 @@ export default class ContactForm extends Component{
                 </form>
                 </>
     )
-}
+  }
 }
