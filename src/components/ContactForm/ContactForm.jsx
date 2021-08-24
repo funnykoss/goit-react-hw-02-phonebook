@@ -6,12 +6,12 @@ export default class ContactForm extends Component{
     state = {
          name: '',
         number: '',
-  }
+    }
 
     handlerChange = event => {
     const { name, value } = event.target;
     this.setState({ [name]: value});
-  };
+    };
 
     submitForm = event => {
         event.preventDefault();
@@ -24,15 +24,15 @@ export default class ContactForm extends Component{
       this.props.addContact(newContact);
       this.reset()
     
-  }
+    }
     reset = () => {
         this.setState({ name: '', number: '',})
-  }
+    }
     render(){
         return (
        <>
         <h2 className={s.title}>Phonebook</h2>
-            <form className={s.form}
+          <form className={s.form}
               onSubmit={this.submitForm}>
               <label className={s.label}>
             Name
@@ -59,8 +59,8 @@ export default class ContactForm extends Component{
             />
           </label>
           <button type="submit" className={s.button}> Add contacts</button>
-                </form>
-                </>
+          </form>
+      </>
     )
   }
 }
